@@ -5,7 +5,22 @@ import { userContext } from "../../AuthProvider/AuthProvider";
 const Signup = () => {
   const { createUser } = useContext(userContext);
 
- 
+  const handleSignup = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const user = { name, email, password };
+    console.log(user);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log("created user", user);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
