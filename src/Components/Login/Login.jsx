@@ -24,8 +24,8 @@ const Login = () => {
       .catch((error) => console.log(error));
   };
 
-//for google sign in
-  const { googleSignIn } = useContext(userContext);
+  //for google sign in
+  const { googleSignIn, githubSignIn } = useContext(userContext);
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
@@ -36,7 +36,16 @@ const Login = () => {
       });
   };
 
-
+  //for github sign in
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
