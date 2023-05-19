@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/font-design-word-toy-shop-with-many-toys_1308-42318.avif'
+import { useContext } from "react";
+import { userContext } from "../../../AuthProvider/AuthProvider";
 
 const Header = () => {
+
+ const { user, logOut } = useContext(userContext);
+
+ const handleLogOut = () => {
+   logOut()
+     .then(() => {})
+     .catch((error) => console.log(error));
+ };
+
+
   return (
     <div className="navbar bg-base-200 mb-4">
       <div className="navbar-start">
@@ -32,21 +44,31 @@ const Header = () => {
             <li>
               <Link to="/alltoy">All Toys</Link>
             </li>
-            <li>
-              <Link to="/mytoy">My Toys</Link>
-            </li>
-            <li>
-              <Link to="/addtoy">Add a Toys</Link>
-            </li>
+
             <li>
               <Link to="/blog">Blogs</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+            {user?.email ? (
+              <>
+                <li>
+                  <Link to="/mytoy">My Toys</Link>
+                </li>
+                <li>
+                  <Link to="/addtoy">Add a Toys</Link>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>Log out</button>
+                </li>
+              </>
+            ) : (
+              <li>
+                {" "}
+                <Link to="/login">Login</Link>{" "}
+              </li>
+            )}
           </ul>
         </div>
-        <Link to='/'>
+        <Link to="/">
           <img className="w-36 h-16 rounded-2xl" src={logo} alt="" />
         </Link>
       </div>
@@ -58,18 +80,27 @@ const Header = () => {
           <li>
             <Link to="/alltoy">All Toys</Link>
           </li>
-          <li>
-            <Link to="/mytoy">My Toys</Link>
-          </li>
-          <li>
-            <Link to="/addtoy">Add a Toys</Link>
-          </li>
+
           <li>
             <Link to="/blog">Blogs</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {user?.email ? (
+            <>
+              <li>
+                <Link to="/mytoy">My Toys</Link>
+              </li>
+              <li>
+                <Link to="/addtoy">Add a Toys</Link>
+              </li>
+              <li>
+                <button onClick={handleLogOut}>Log out</button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link to="/login">Login</Link>{" "}
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
