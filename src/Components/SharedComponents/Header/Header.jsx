@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import logo from '../../../assets/font-design-word-toy-shop-with-many-toys_1308-42318.avif'
 
 const Header = () => {
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar bg-base-200 mb-4">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -40,9 +41,14 @@ const Header = () => {
             <li>
               <Link to="/blog">Blogs</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link to='/'>
+          <img className="w-36 h-16 rounded-2xl" src={logo} alt="" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal font-bold ">
@@ -60,6 +66,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/blog">Blogs</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>
