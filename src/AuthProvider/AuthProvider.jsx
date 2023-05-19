@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-  
+
   const githubSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, githubProvider);
@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = {
+  const userAuthInfo = {
     user,
     loading,
     createUser,
@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <userContext.Provider value={authInfo}>{children}</userContext.Provider>
+    <userContext.Provider value={userAuthInfo}>{children}</userContext.Provider>
   );
 };
 

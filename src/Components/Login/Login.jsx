@@ -1,28 +1,42 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext,  } from "react";
+import { useContext } from "react";
 import { userContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-    const { signIn } = useContext(userContext);
-    const location = useLocation();
-    const navigate = useNavigate();
+  const { signIn } = useContext(userContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
-    const handleLogin = (event) => {
-      event.preventDefault();
-      const form = event.target;
-      const email = form.email.value;
-      const password = form.password.value;
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-      signIn(email, password)
-        .then((result) => {
-          const user = result.user;
-          console.log(user);
-          navigate(from, { replace: true });
-        })
-        .catch((error) => console.log(error));
-    };
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  };
+
+//for google sign in
+  const { googleSignIn } = useContext(userContext);
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
 
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
@@ -177,6 +191,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
