@@ -1,54 +1,52 @@
-//import { useContext } from "react";
-//import { userContext } from "../../AuthProvider/AuthProvider";
+import { useContext } from "react";
+import { userContext } from "../../AuthProvider/AuthProvider";
 
-const AddToy = () => {
+const UpdateToy = () => {
+  const { user } = useContext(userContext);
 
+  const handleUpdateToy = (event) => {
+    event.preventDefault();
 
-//const { user } = useContext(userContext)
+    const form = event.target;
+    const name = form.name.value;
+    const price = form.price.value;
+    const category = form.category.value;
+    const sub_category = form.sub_category.value;
+    const available = form.available.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+    const updateToy = {
+      customerName: name,
+      price,
+      category,
+      sub_category,
+      available,
+      details,
+      photo,
+    };
 
-const handleAddToy = (event) => {
-  event.preventDefault();
+    console.log(updateToy);
 
-  const form = event.target;
-  const name = form.name.value;
-  const price = form.price.value;
-  const category = form.category.value;
-  const sub_category = form.sub_category.value;
-  const available = form.available.value;
-  const details = form.details.value;
-  const photo = form.photo.value;
-  const addToy = {
-    customerName: name,
-    price,
-    category,
-    sub_category,
-    available,
-    details,
-    photo,
+    fetch("https://car-doctor-server-smoky.vercel.app/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          alert("Update a toy successfully");
+        }
+      });
   };
-
-  console.log(addToy);
-
-  fetch("https://car-doctor-server-smoky.vercel.app/bookings", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(addToy),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      if (data.insertedId) {
-        alert("Add a toy successfully");
-      }
-    });
-};
 
   return (
     <div className="p-32">
       <h1 className="text-center mb-10 text-4xl font-bold">Add a Toy</h1>
-      <form onSubmit={handleAddToy}>
+      <form onSubmit={handleUpdateToy}>
         {/* first row */}
         <div className="flex gap-7 mb-4">
           <div className="form-control md:w-1/2">
@@ -162,4 +160,4 @@ const handleAddToy = (event) => {
   );
 };
 
-export default AddToy;
+export default UpdateToy;
