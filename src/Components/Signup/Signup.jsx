@@ -5,7 +5,7 @@ import { userContext } from "../../AuthProvider/AuthProvider";
 const Signup = () => {
   const { createUser } = useContext(userContext);
 
-  const handleSignup = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -33,7 +33,7 @@ const Signup = () => {
           </div>
         </div>
         <div className="bg-white shadow p-4 py-6 space-y-8 sm:p-6 sm:rounded-lg">
-          <form onSubmit={handleSignup} className="space-y-5">
+          <form onSubmit={handleSignUp} className="space-y-5">
             <div>
               <label className="font-medium">Name</label>
               <input

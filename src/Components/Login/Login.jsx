@@ -6,7 +6,6 @@ const Login = () => {
   const { signIn } = useContext(userContext);
   const location = useLocation();
   const navigate = useNavigate();
-
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {

@@ -10,6 +10,8 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../Firebase/firebase.init";
+
+
 export const userContext = createContext(null);
 const auth = getAuth(app);
 
