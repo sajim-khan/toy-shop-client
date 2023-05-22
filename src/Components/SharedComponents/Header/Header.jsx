@@ -44,6 +44,9 @@ const Header = () => {
             <li>
               <Link to="/alltoy">All Toys</Link>
             </li>
+            <li>
+              <Link to="/update">Update a Toy</Link>
+            </li>
 
             <li>
               <Link to="/blog">Blogs</Link>
@@ -55,6 +58,9 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="/addtoy">Add a Toys</Link>
+                </li>
+                <li>
+                  <Link to="/update">Update a Toy</Link>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>Log out</button>
@@ -90,6 +96,9 @@ const Header = () => {
               </li>
               <li>
                 <Link to="/addtoy">Add a Toys</Link>
+              </li>
+              <li>
+                <Link to="/update">Update a Toy</Link>
               </li>
               <li>
                 <button onClick={handleLogOut}>Log out</button>

@@ -23,12 +23,12 @@ const BestSell = () => {
             <div className="relative">
               <img
                 className="hidden lg:block w-48 h-44 "
-                src="https://dtt1c9id3txwq.cloudfront.net/assets/images/000/678/318/large/1Red-Toy-Sport-Car.jpg?1552202406"
+                src="https://i5.walmartimages.ca/images/Large/570/452/6000198570452.jpg"
                 alt="Jaguar"
               />
               <img
                 className="lg:hidden w-48 h-44"
-                src="https://dtt1c9id3txwq.cloudfront.net/assets/images/000/678/318/large/1Red-Toy-Sport-Car.jpg?1552202406"
+                src="https://i5.walmartimages.ca/images/Large/570/452/6000198570452.jpg"
                 alt="Jaguar"
               />
 

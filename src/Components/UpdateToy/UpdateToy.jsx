@@ -1,7 +1,10 @@
 import { useContext } from "react";
 import { userContext } from "../../AuthProvider/AuthProvider";
+import useTitle from "../../Hooks/Titile";
 
 const UpdateToy = () => {
+useTitle("Update a toy");
+
   const { user } = useContext(userContext);
 
   const handleUpdateToy = (event) => {
@@ -45,7 +48,7 @@ const UpdateToy = () => {
 
   return (
     <div className="p-32">
-      <h1 className="text-center mb-10 text-4xl font-bold">Add a Toy</h1>
+      <h1 className="text-center mb-10 text-4xl font-bold">Update a Toy</h1>
       <form onSubmit={handleUpdateToy}>
         {/* first row */}
         <div className="flex gap-7 mb-4">
