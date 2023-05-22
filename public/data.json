@@ -1,0 +1,79 @@
+[
+  {
+    "CategoryName": "Sports Cars",
+    "toys": [
+      {
+        "_id": "1",
+        "picture": "https://dtt1c9id3txwq.cloudfront.net/assets/images/000/678/318/large/1Red-Toy-Sport-Car.jpg?1552202406",
+        "name": "Jaguar",
+        "price": 29.99,
+        "rating": 4.5
+      },
+      {
+        "_id": "2",
+        "picture": "https://cdn.shopify.com/s/files/1/0247/6235/1678/products/Die_Cast_Toy_Jaguar_F_Type_Silver_1024x1024@2x.jpg?v=1571487502",
+        "name": "Jaguar",
+        "price": 24.99,
+        "rating": 4.2
+      }
+    ]
+  },
+  {
+    "CategoryName": "Sports Bike",
+    "toys": [
+      {
+        "_id": "3",
+        "picture": "https://www.toyexpress.in/Admin/ItemImages/ae105976542945f7807b0a474ad56c58.jpg",
+        "name": "R15",
+        "price": 39.99,
+        "rating": 4.6
+      },
+      {
+        "_id": "4",
+        "picture": "https://assetscdn1.paytm.com/images/catalog/product/K/KI/KIDOH-BABY-BABYOH-B185384B9649443/1597661389386_10.jpg?imwidth=320&impolicy=hq",
+        "name": "R15",
+        "price": 25.99,
+        "rating": 4.3
+      }
+    ]
+  },
+  {
+    "CategoryName": "sports car",
+    "toys": [
+      {
+        "_id": "5",
+        "picture": "https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/132_Audi_e_Tron_diecast_model_toy_car_ra-Audi-233d4-285180.jpg",
+        "name": "Audi",
+        "price": 17.99,
+        "rating": 4.4
+      },
+      {
+        "_id": "6",
+        "picture": "https://images-cdn.ubuy.co.in/63c9c29b021a5430cf4f8c13-rastar-audi-rc-car-1-14-audi-r8.jpg",
+        "name": "Audi",
+        "price": 15.99,
+        "rating": 4.3
+      }
+    ]
+  },
+  {
+    "CategoryName": "Mini Police Cars",
+    "toys": [
+      {
+        "_id": "7",
+        "picture": "https://toulee-shop.com/wp-content/uploads/2021/09/Slide2-2.jpg",
+        "name": "Law Enforcement Cruiser",
+        "price": 28.99,
+        "rating": 4.8
+      },
+      {
+        "_id": "8",
+        "picture": "https://m.media-amazon.com/images/I/71dZ0il0V+L._AC_SL1500_.jpg",
+        "name": "Law Enforcement Cruiser",
+        "price": 26.99,
+        "rating": 4.5
+      }
+    ]
+  }
+]
+

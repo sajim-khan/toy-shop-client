@@ -7,6 +7,9 @@ import AddToy from "../Components/AddToy/AddToy";
 import Blogs from "../Components/Blogs/Blogs";
 import Login from "../Components/Login/Login";
 import Signup from "../Components/Signup/Signup";
+import UpdateToy from "../Components/UpdateToy/UpdateToy";
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import PrivetRouter from "../PrivetRouter/PrivetRouter";
 
 const router = createBrowserRouter([
   {
@@ -19,11 +22,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/alltoy",
-        element: <AllToy></AllToy>,
+        element: (
+          <PrivetRouter>
+            <AllToy></AllToy>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/mytoy",
-        element: <MyToy></MyToy>,
+        element: (
+          <PrivetRouter>
+            <MyToy></MyToy>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/addtoy",
@@ -34,18 +45,22 @@ const router = createBrowserRouter([
         element: <Blogs></Blogs>,
       },
       {
-        path: '/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: '/signup',
-        element: <Signup></Signup>
+        path: "/signup",
+        element: <Signup></Signup>,
       },
       {
-        path: '/update',
-        element: <
-      }
+        path: "/update",
+        element: <UpdateToy></UpdateToy>,
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 

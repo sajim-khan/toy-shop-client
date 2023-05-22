@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const ErrorPage = () => {
@@ -14,15 +15,16 @@ const ErrorPage = () => {
                 Page not found
               </p>
               <p className="text-gray-600">
-                Sorry, the page you are looking for could not be found or has
-                been removed.
+                Sorry, the page you are looking for could not be found.
               </p>
-              <a
+              <Link
+                to="/"
                 href="javascript:void(0)"
                 className="text-indigo-600 duration-150 hover:text-indigo-400 font-medium inline-flex items-center gap-x-1"
               >
                 Go back
                 <svg
+                  to="/"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -34,7 +36,7 @@ const ErrorPage = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
