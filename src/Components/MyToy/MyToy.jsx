@@ -3,7 +3,7 @@ import useTitle from "../../Hooks/Titile";
 import img from "../../assets/TOY-MARKET-PIC.jpg";
 
 const MyToy = () => {
-  useTitle("my toy");
+  useTitle("My toy");
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-5">

@@ -1,201 +1,105 @@
+import { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { userContext } from "../../AuthProvider/AuthProvider";
+import ToyDetails from "../ToyTabsDetails/ToyDetails";
 const ToyTabs = () => {
-  //  const [data, setData]=useState([])
-  //   useEffectt(()=>{
-  //     fetch('')
-  //     .then(res=>res.json())
-  //     .then(data=>setData(data))
-  //   },[])
+  const [categories, setCategories] = useState([]);
+  const [selectedToy, setSelectedToy] = useState(null);
 
-  const data = [
-    {
-      name: "speed car",
-    },
-    {
-      name: "super car",
-    },
-    {
-      name: "Police car",
-    },
-    {
-      name: "sports bike",
-    },
-  ];
+  const { user } = useContext(userContext);
+  useEffect(() => {
+    fetch("http://localhost:5000/toys")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
+
+  const openModal = (toy) => {
+    setSelectedToy(toy);
+  };
+
+  //
+
+  const closeModal = () => {
+    setSelectedToy(null);
+  };
 
   return (
     <div>
       <>
-        <Tabs className="p-24 text-center">
-          <TabList>
-            {data?.map((viewData) => (
-              <>
-                <Tab key={viewData._id}>{viewData.name}</Tab>
-              </>
+        <Tabs>
+          <TabList className="  rounded-lg w-1/2 mx-auto text-indigo-600 font-bold">
+            {categories.map((category, index) => (
+              <Tab key={index}>{category.CategoryName}</Tab>
             ))}
           </TabList>
-          <TabPanel>
-            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-              <div className="grid max-w-screen-lg gap-8 row-gap-5 md:row-gap-8 sm:mx-auto lg:grid-cols-2">
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
+
+          {categories.map((category, index) => (
+            <TabPanel key={index}>
+              <div
+                data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 w-11/12 mx-auto"
+              >
+                {category.toys.map((toy, subIndex) => (
+                  <div
+                    key={subIndex}
+                    className=" p-4 shadow-md border  border-indigo-600"
+                  >
+                    <div>
+                      <div className="lg:flex rounded-3xl">
+                        {/* Image */}
+                        <div className="lg:w-1/2 ">
+                          <figure>
+                            <img
+                              src={toy.picture}
+                              alt={toy.name}
+                              className=" w-full h-72 mx-auto   p-4 "
+                            />
+                          </figure>
+                        </div>
+
+                        {/* Text */}
+                        <div className="lg:w-1/2 p-6">
+                          <div className="card-body">
+                            <h3 className="text-lg font-bold">Name : {toy.name}</h3>
+                            <div className=" items-center mb-2">
+                              <span className="text-yellow-500 ">
+                                {toy.rating} <i className="fas fa-star"></i>
+                              </span>
+                              <span className="text-gray-600"> 
+                                ({toy.rating})
+                              </span>
+                            </div>
+
+                            <p className="text-gray-600 "> Price : ${toy.price}</p>
+
+                            <button
+                              onClick={() => openModal(toy)}
+                              className="bg-indigo-500 btn-sm  text-white   rounded"
+                            >
+                              View Details
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
-                  </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
+                ))}
               </div>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-              <div className="grid max-w-screen-lg gap-8 row-gap-5 md:row-gap-8 sm:mx-auto lg:grid-cols-2">
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
-                  </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
-                  </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-              <div className="grid max-w-screen-lg gap-8 row-gap-5 md:row-gap-8 sm:mx-auto lg:grid-cols-2">
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
-                  </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
-                  </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-              <div className="grid max-w-screen-lg gap-8 row-gap-5 md:row-gap-8 sm:mx-auto lg:grid-cols-2">
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
-                  </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
-                <div className="transition duration-300 transform bg-white rounded shadow-sm hover:-translate-y-1 hover:shadow md:text-center">
-                  <div className="relative">
-                    <img
-                      className="object-cover w-full h-64 rounded-t lg:h-80 xl:h-96"
-                      src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-                      alt=""
-                    />
-                    <div className="absolute inset-0 bg-gray-800 bg-opacity-25" />
-                  </div>
-                  <div className="px-6 py-8 border border-t-0 rounded-b sm:px-8">
-                    <h5 className="mb-2 text-xl font-bold leading-none sm:text-2xl">
-                      Name:
-                    </h5>
-                    <p className="mb-5 text-gray-700">Ratings:</p>
-                    <p className="mb-5 text-gray-700">Price:</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </TabPanel>
+            </TabPanel>
+          ))}
         </Tabs>
       </>
+
+      <div>
+        {selectedToy && (
+          <div className="fixed inset-0  flex items-center justify-center">
+            <ToyDetails toy={selectedToy} closeModal={closeModal} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

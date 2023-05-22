@@ -3,7 +3,7 @@ import { userContext } from "../../AuthProvider/AuthProvider";
 import useTitle from "../../Hooks/Titile";
 
 const UpdateToy = () => {
-useTitle("Update a toy");
+useTitle("Update toy");
 
   const { user } = useContext(userContext);
 

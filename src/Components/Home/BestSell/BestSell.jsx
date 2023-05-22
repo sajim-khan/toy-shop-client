@@ -1,6 +1,7 @@
 import React from "react";
 
 const BestSell = () => {
+
   return (
     <div className="pb-16">
       <div className="bg-gray-100 flex flex-col justify-center items-center pt-9 sm:pt-12 lg:pt-16 pb-24 sm:pb-52">
