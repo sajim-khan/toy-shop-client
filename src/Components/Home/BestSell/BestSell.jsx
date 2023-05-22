@@ -108,7 +108,7 @@ const BestSell = () => {
               <img
                 className="hidden lg:block w-48 h-44"
                 src="https://m.media-amazon.com/images/I/71dZ0il0V+L._AC_SL1500_.jpg"
-                alt="game-controller"
+                alt="Police Car"
               />
               <img
                 className="lg:hidden w-48 h-44"
