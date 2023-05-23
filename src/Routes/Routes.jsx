@@ -11,7 +11,7 @@ import UpdateToy from "../Components/UpdateToy/UpdateToy";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import PrivetRouter from "../PrivetRouter/PrivetRouter";
 import About from "../Components/About/About";
-import ToyDetails from "../Components/ToyDetails/ToyDetails";
+import SingleToyDetails from "../Components/Home/SingleToyDetails/SingleToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +58,16 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivetRouter>
+            <SingleToyDetails></SingleToyDetails>
+          </PrivetRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/addtoys/${params.id}`),
       },
       {
         path: "/update",

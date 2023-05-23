@@ -13,9 +13,11 @@ const AddToy = () => {
     const form = event.target;
     const name = form.name.value;
     const price = form.price.value;
+    const seller_name = form.seller_name.value;
     const category = form.category.value;
     const sub_category = form.sub_category.value;
     const available = form.available.value;
+    const ratings = form.ratings.value;
     const details = form.details.value;
     const email = user?.email;
 
@@ -29,6 +31,8 @@ const AddToy = () => {
       email,
       details,
       photo,
+      seller_name,
+      ratings,
     };
 
     console.log(addToy);
@@ -57,7 +61,7 @@ const AddToy = () => {
         <div className="flex gap-7 mb-4">
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text">Name</span>
+              <span className="label-text">Toy Name</span>
             </label>
             <label className="input-group">
               <input
@@ -84,20 +88,33 @@ const AddToy = () => {
         </div>
 
         {/* seller email */}
-        <div className="mb-4">
-          <label
-            htmlFor="sellerEmail"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Seller Email
-          </label>
-          <input
-            defaultValue={user?.email}
-            type="email"
-            id="sellerEmail"
-            name="sellerEmail"
-            className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-          />
+        <div className="flex gap-7 mb-4">
+          <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text">Seller Email</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                placeholder="email"
+                name="email"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+          <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text">Seller Name</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                placeholder="seller name"
+                name="seller_name"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
         </div>
 
         {/* 2nd row */}
@@ -146,19 +163,19 @@ const AddToy = () => {
           </div>
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text">Details</span>
+              <span className="label-text">Ratings</span>
             </label>
             <label className="input-group">
               <input
                 type="text"
-                name="details"
-                placeholder="details"
+                name="ratings"
+                placeholder="ratings"
                 className="input input-bordered w-full"
               />
             </label>
           </div>
         </div>
-        {/* 4th row */}
+
         <div className="flex gap-7 mb-4">
           <div className="form-control w-full">
             <label className="label">
@@ -174,6 +191,25 @@ const AddToy = () => {
             </label>
           </div>
         </div>
+
+        {/* ratings */}
+        <div className="flex gap-7 mb-4">
+          <div className="form-control md:w-full">
+            <label className="label">
+              <span className="label-text">Details</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                name="details"
+                placeholder="details"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+        </div>
+        {/* 4th row */}
+
         <input
           type="submit"
           value="Add Toy"

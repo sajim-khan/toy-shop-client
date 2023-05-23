@@ -3,10 +3,21 @@ import React from "react";
 const Slider = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold mt-0 text-center mb-5">Toy Slider</h1>
+      <h1
+        className="text-4xl font-bold text-center mb-5 text-blue-700"
+        data-aos="zoom-in"
+        data-aos-duration="500"
+      >
+        Toy Slider
+      </h1>
       <div className="carousel w-full h-96 items-center" data-aos="flip-right">
         <h1>Toy Slider</h1>
-        <div id="slide1" className="carousel-item relative w-full">
+        <div
+          id="slide1"
+          className="carousel-item relative w-full"
+          data-aos="fade-up"
+          data-aos-duration="3000"
+        >
           <img
             className="w-full h-96 "
             src="https://www.bdstall.com/asset/product-image/giant_182838.jpg"

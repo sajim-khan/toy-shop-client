@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useTitle from "../../Hooks/Titile";
 import { Link } from "react-router-dom";
-import ToyDetails from "../ToyDetails/ToyDetails";
 
 const AllToy = () => {
   useTitle("All Toy");
@@ -51,20 +50,14 @@ const AllToy = () => {
               <td></td>
               <td></td>
               <td>
-                {" "}
-                <button onClick={() => openModal(toy)}>
-                  View Details{" "}
-                </button>{" "}
+                <Link to={`/details/${toy._id}`}>
+                  <button onClick={() => openModal(toy)}>View Details</button>
+                </Link>
               </td>
             </tbody>
           ))}
         </table>
       </div>
-      {selectedToy && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
-          <ToyDetails toy={selectedToy} closeModal={closeModal} />
-        </div>
-      )}
     </div>
   );
 };

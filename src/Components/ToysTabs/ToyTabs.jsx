@@ -27,7 +27,7 @@ const ToyTabs = () => {
   return (
     <div>
       <>
-        <h1 className="text-3xl font-bold text-center my-10">
+        <h1 className="text-4xl font-bold text-center my-10 text-cyan-600" data-aos="zoom-in">
           Shop By Category
         </h1>
         <Tabs>

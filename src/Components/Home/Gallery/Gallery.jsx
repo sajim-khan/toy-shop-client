@@ -24,8 +24,8 @@ const Gallery = () => {
 
   return (
     <div className="px-40  my-20">
-      <div className="text-center font-bold text-5xl" data-aos="zoom-in-up">
-        Gallery{" "}
+      <div className="text-center font-bold text-5xl text-fuchsia-600" data-aos="zoom-in-up">
+        Gallery
       </div>
       <div data-aos="zoom-in-up">
         <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] text-center font-bold text-5xl my-7 pb-7">

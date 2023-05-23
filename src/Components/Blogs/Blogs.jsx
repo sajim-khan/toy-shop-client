@@ -1,10 +1,10 @@
-import useTitle from "../../Hooks/Titile";
+
+import React from 'react';
 
 const Blogs = () => {
-useTitle("Blog");
     return (
         <div>
-            <h1>This is Blog Page</h1>
+            
         </div>
     );
 };
