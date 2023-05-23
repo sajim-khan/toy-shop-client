@@ -1,10 +1,10 @@
-//import { useContext } from "react";
-//import { userContext } from "../../AuthProvider/AuthProvider";
+import { useContext } from "react";
+import { userContext } from "../../AuthProvider/AuthProvider";
 
 import useTitle from "../../Hooks/Titile";
 
 const AddToy = () => {
-  //const { user } = useContext(userContext)
+  const { user } = useContext(userContext);
   useTitle("Add toy");
 
   const handleAddToy = (event) => {
@@ -17,6 +17,8 @@ const AddToy = () => {
     const sub_category = form.sub_category.value;
     const available = form.available.value;
     const details = form.details.value;
+    const email = user?.email;
+
     const photo = form.photo.value;
     const addToy = {
       customerName: name,
@@ -24,13 +26,14 @@ const AddToy = () => {
       category,
       sub_category,
       available,
+      email,
       details,
       photo,
     };
 
     console.log(addToy);
 
-    fetch("", {
+    fetch("http://localhost:5000/addtoys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -79,6 +82,24 @@ const AddToy = () => {
             </label>
           </div>
         </div>
+
+        {/* seller email */}
+        <div className="mb-4">
+          <label
+            htmlFor="sellerEmail"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Seller Email
+          </label>
+          <input
+            defaultValue={user?.email}
+            type="email"
+            id="sellerEmail"
+            name="sellerEmail"
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+          />
+        </div>
+
         {/* 2nd row */}
         <div className="flex gap-7 mb-4">
           <div className="form-control md:w-1/2">

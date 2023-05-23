@@ -25,13 +25,19 @@ const Gallery = () => {
   return (
     <div className="px-40  my-20">
       <h1 className="text-center font-bold text-5xl">Gallery </h1>
-      <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] text-center font-bold text-5xl my-7 pb-7">
-        Wellcome to Our ToY Store
-      </h1>
+      <div data-aos="zoom-in-up">
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] text-center font-bold text-5xl my-7 pb-7">
+          Wellcome to Our ToY Store
+        </h1>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
         {galleryData.map((gallery) => (
           <div>
-            <a href="#" class="group relative block bg-black">
+            <a
+              href="#"
+              class="group relative block bg-black"
+              data-aos="flip-right"
+            >
               <img
                 alt="Developer"
                 src={gallery.picture}
@@ -43,8 +49,7 @@ const Gallery = () => {
                   {gallery.name}
                 </p>
                 <div class="mt-20 sm:mt-48 lg:mt-60">
-                  <div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                  </div>
+                  <div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"></div>
                 </div>
               </div>
             </a>

@@ -11,6 +11,7 @@ import UpdateToy from "../Components/UpdateToy/UpdateToy";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import PrivetRouter from "../PrivetRouter/PrivetRouter";
 import About from "../Components/About/About";
+import ToyDetails from "../Components/ToyDetails/ToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path : "/about",
-        element : <About></About>
+        path: "/about",
+        element: <About></About>,
       },
       {
         path: "/alltoy",
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
           </PrivetRouter>
         ),
       },
+
       {
         path: "/mytoy",
         element: (
