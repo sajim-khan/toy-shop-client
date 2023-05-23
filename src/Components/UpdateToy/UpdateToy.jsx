@@ -10,7 +10,9 @@ const UpdateToy = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/updateData/?_id=${id}`)
+    fetch(
+      `https://toy-marketplace-server-five.vercel.app/updateData/?_id=${id}`
+    )
       .then((response) => response.json())
       .then((data) => setToys(data))
       .catch((error) => console.log(error));
@@ -31,7 +33,7 @@ const UpdateToy = () => {
 
     console.log(updateToy);
 
-   fetch(`http://localhost:5000/addtoys/${id}`, {
+   fetch(`https://toy-marketplace-server-five.vercel.app/addtoys/${id}`, {
      method: "PATCH",
      headers: {
        "content-type": "application/json",

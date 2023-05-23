@@ -42,9 +42,6 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
               <Link to="/alltoy">All Toys</Link>
             </li>
             <li>
@@ -61,9 +58,6 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="/addtoy">Add a Toys</Link>
-                </li>
-                <li>
-                  <Link to="/update">Update a Toy</Link>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>Log out</button>
@@ -86,9 +80,6 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
             <Link to="/alltoy">All Toys</Link>
           </li>
 
@@ -103,9 +94,7 @@ const Header = () => {
               <li>
                 <Link to="/addtoy">Add a Toys</Link>
               </li>
-              <li>
-                <Link to="/update">Update a Toy</Link>
-              </li>
+              
               <li>
                 <button onClick={handleLogOut}>Log out</button>
               </li>

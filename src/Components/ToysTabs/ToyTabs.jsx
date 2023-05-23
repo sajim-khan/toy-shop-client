@@ -9,7 +9,7 @@ const ToyTabs = () => {
 
   const { user } = useContext(userContext);
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://toy-marketplace-server-five.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -18,8 +18,6 @@ const ToyTabs = () => {
     setSelectedToy(toy);
   };
 
-  //
-
   const closeModal = () => {
     setSelectedToy(null);
   };
@@ -27,7 +25,10 @@ const ToyTabs = () => {
   return (
     <div>
       <>
-        <h1 className="text-4xl font-bold text-center my-10 text-cyan-600" data-aos="zoom-in">
+        <h1
+          className="text-4xl font-bold text-center my-10 text-cyan-600"
+          data-aos="zoom-in"
+        >
           Shop By Category
         </h1>
         <Tabs>
