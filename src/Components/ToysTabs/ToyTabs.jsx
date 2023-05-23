@@ -27,6 +27,9 @@ const ToyTabs = () => {
   return (
     <div>
       <>
+        <h1 className="text-3xl font-bold text-center my-10">
+          Shop By Category
+        </h1>
         <Tabs>
           <TabList className="  rounded-lg w-1/2 mx-auto text-indigo-600 font-bold">
             {categories.map((category, index) => (
@@ -63,17 +66,22 @@ const ToyTabs = () => {
                         {/* Text */}
                         <div className="lg:w-1/2 p-6">
                           <div className="card-body">
-                            <h3 className="text-lg font-bold">Name : {toy.name}</h3>
+                            <h3 className="text-lg font-bold">
+                              Name : {toy.name}
+                            </h3>
                             <div className=" items-center mb-2">
                               <span className="text-yellow-500 ">
                                 {toy.rating} <i className="fas fa-star"></i>
                               </span>
-                              <span className="text-gray-600"> 
+                              <span className="text-gray-600">
                                 ({toy.rating})
                               </span>
                             </div>
 
-                            <p className="text-gray-600 "> Price : ${toy.price}</p>
+                            <p className="text-gray-600 ">
+                              {" "}
+                              Price : ${toy.price}
+                            </p>
 
                             <button
                               onClick={() => openModal(toy)}

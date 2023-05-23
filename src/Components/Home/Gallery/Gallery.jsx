@@ -24,15 +24,20 @@ const Gallery = () => {
 
   return (
     <div className="px-40  my-20">
-      <h1 className="text-center font-bold text-5xl">Gallery </h1>
+      <div className="text-center font-bold text-5xl" data-aos="zoom-in-up">
+        Gallery{" "}
+      </div>
       <div data-aos="zoom-in-up">
         <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] text-center font-bold text-5xl my-7 pb-7">
           Wellcome to Our ToY Store
         </h1>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-2 gap-10 "
+        data-aos="flip-up"
+      >
         {galleryData.map((gallery) => (
-          <div>
+          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <a
               href="#"
               class="group relative block bg-black"
