@@ -70,7 +70,7 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5000/addtoys/${params.id}`),
       },
       {
-        path: "/update",
+        path: "/update/:id",
         element: (
           <PrivetRouter>
             <UpdateToy></UpdateToy>

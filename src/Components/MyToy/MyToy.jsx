@@ -20,7 +20,7 @@ const MyToy = () => {
   const handleRemoveToy = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be delted this",
+      text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -35,11 +35,7 @@ const MyToy = () => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire(
-                "Deleted!",
-                "Your Toy Deleted Successfully!",
-                "success"
-              );
+              Swal.fire("Deleted!", "Toy Deleted Successfully!", "success");
               const remaining = mytoys.filter((dt) => dt._id !== id);
               setMyToys(remaining);
             }
@@ -48,106 +44,60 @@ const MyToy = () => {
     });
   };
 
-
-const handleUpdateToy =id => {
-
-}
+  const handleUpdateToy = (id) => {
+    // Update logic goes here
+  };
 
   return (
     <div>
-      <h2 className="text-5xl mt-10 text-center">All toys:</h2>
+      <h2 className="text-5xl mt-10 text-center">My toys</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
-          {/* head */}
           <thead>
             <tr>
               <th>Image</th>
-              <th>
-                {mytoys &&
-                  mytoys.map((data, index) => (
-                    <>
-                      <tr>
-                        <th>{index + 1}</th>
-                        <th>
-                          <img
-                            className="w-16 h-16 rounded-full"
-                            src={data.image}
-                            alt=""
-                          />
-                        </th>
-                        <th>{data.toyName}</th>
-                        <th>{data.sellerEmail}</th>
-                        <th>{data.category}</th>
-                        <th>${data.price}</th>
-                        <th>{data.quantity}</th>
-                        <th>{data.rating}</th>
-                        <th>
-                          <label
-                            onClick={handleUpdateToy(data._id)}
-                            htmlFor="my-modal-6"
-                            className="py-1 px-5 rounded-full bg-[#024E92] text-white cursor-pointer"
-                          >
-                            Update
-                          </label>
-                        </th>
-                        <th>
-                          <button
-                            onClick={handleRemoveToy(data._id)}
-                            className="py-1 px-5 text-white rounded-full bg-rose-600"
-                          >
-                            Delete
-                          </button>
-                        </th>
-                      </tr>
-                    </>
-                  ))}{" "}
-                Name
-              </th>
+              <th>Name</th>
               <th>Seller Name</th>
               <th>Seller Email</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Ratings</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {mytoys &&
               mytoys.map((data, index) => (
-                <>
-                  <tr>
-                    <th>{index + 1}</th>
-                    <th>
-                      <img
-                        className="w-16 h-16 rounded-full"
-                        src={data.image}
-                        alt=""
-                      />
-                    </th>
-                    <th>{data.customerName}</th>
-                    <th>{data.email}</th>
-                    <th>{data.category}</th>
-                    <th>${data.price}</th>
-                    <th>{data.available}</th>
-                    <th>{data.ratings}</th>
-                    <th>
-                      <label
-                        onClick={() => handleUpdateData(data._id)}
-                        htmlFor="my-modal-6"
-                        className="py-1 px-5 rounded-full bg-[#024E92] text-white cursor-pointer"
-                      >
-                        Update
-                      </label>
-                    </th>
-                    <th>
-                      <button
-                        onClick={() => handleRemoveToy(data._id)}
-                        className="py-1 px-5 text-white rounded-full bg-rose-600"
-                      >
-                        Delete
-                      </button>
-                    </th>
-                  </tr>
-                </>
+                <tr key={data._id}>
+                  <td>
+                    <img
+                      className="w-16 h-16 rounded-full"
+                      src={data.photo}
+                      alt=""
+                    />
+                  </td>
+                  <td>{data.customerName}</td>
+                  <td>{data.seller_name}</td>
+                  <td>{data.email}</td>
+                  <td>{data.available}</td>
+                  <td>${data.price}</td>
+                  <td>{data.ratings}</td>
+                  <td>
+                    <Link to={`/update/${data._id}`}
+                      // onClick={() => handleUpdateToy(data._id)}
+                      htmlFor="my-modal-6"
+                      className="py-1 px-5 rounded-full bg-[#024E92] text-white cursor-pointer"
+                    >
+                      Update
+                    </Link>
+                    <button
+                      onClick={() => handleRemoveToy(data._id)}
+                      className="py-1 px-5 text-white rounded-full bg-rose-600 ml-2"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
               ))}
           </tbody>
         </table>
@@ -157,14 +107,3 @@ const handleUpdateToy =id => {
 };
 
 export default MyToy;
-
-// customerName: name,
-// price,
-// category,
-// sub_category,
-// available,
-// email,
-// details,
-// photo,
-// seller_name,
-// ratings,

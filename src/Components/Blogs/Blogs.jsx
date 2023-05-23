@@ -3,9 +3,16 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div>
-            
-        </div>
+      <div>
+        <h1>Q-1. </h1>
+        <p></p>
+        <h1></h1>
+        <p></p>
+        <h1></h1>
+        <p></p>
+        <h1></h1>
+        <p></p>
+      </div>
     );
 };
 

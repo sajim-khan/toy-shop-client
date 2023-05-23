@@ -26,7 +26,7 @@ const AllToy = () => {
     <div>
       <h2 className="text-5xl mt-10 text-center">All toys:</h2>
       <div className=" px-20 py-10 overflow-x-auto w-full">
-        <table className="table w-full p-20">
+        <table className="table w-full ">
           {/* head */}
           <thead>
             <tr>
@@ -35,7 +35,7 @@ const AllToy = () => {
               <th className="text-center">Sub-Category</th>
               <th className="text-center">Price</th>
               <th className="text-center">Available</th>
-              <th className="text-center">Details</th>
+              <th className="text-end">Details</th>
               <th></th>
             </tr>
           </thead>
@@ -45,10 +45,10 @@ const AllToy = () => {
                 <img src={toy.photo} alt="" />
               </td>
               <td className="text-center">sajim</td>
-              <td>{toy.customerName}</td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className="text-center">{toy.customerName}</td>
+              <td className="text-center">{toy.price}</td>
+              <td className="text-center">{toy.available}</td>
+              <td className="text-center"></td>
               <td>
                 <Link to={`/details/${toy._id}`}>
                   <button onClick={() => openModal(toy)}>View Details</button>
