@@ -8,6 +8,9 @@ const UpdateToy = () => {
 
   const { id } = useParams();
   const [toys, setToys] = useState([]);
+  console.log(toys);
+
+  ///addtoys/:id
 
   useEffect(() => {
     fetch(
@@ -31,36 +34,35 @@ const UpdateToy = () => {
       details,
     };
 
-    console.log(updateToy);
+    console.log(id);
 
-   fetch(`https://toy-marketplace-server-five.vercel.app/addtoys/${id}`, {
-     method: "PATCH",
-     headers: {
-       "content-type": "application/json",
-     },
-     body: JSON.stringify(toys),
-   })
-     .then((res) => res.json())
-     .then((data) => {
-       console.log(data);
-       if (data.modifiedCount > 0) {
-         Swal.fire({
-           position: "top-end",
-           icon: "success",
-           title: "Your Toy has been Updated",
-           showConfirmButton: false,
-           timer: 1500,
-         });
-         // Update state
-         const remaining = toys.filter((updateToy) => updateToy._id !== id);
-         const updated = toys.find((updateToy) => updateToy._id === id);
-         updated.status = "confirm";
-         const newToys = [updated, ...remaining];
-         setToys(newToys);
-       }
-     });
+    fetch(`https://toy-marketplace-server-five.vercel.app/addtoys/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toys),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Toy has been Updated",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // Update state
+          const remaining = toys.filter((updateToy) => updateToy._id !== id);
+          const updated = toys.find((updateToy) => updateToy._id === id);
+          updated.status = "confirm";
+          const newToys = [updated, ...remaining];
+          setToys(newToys);
+        }
+      });
   };
-
 
   return (
     <div className="p-32">

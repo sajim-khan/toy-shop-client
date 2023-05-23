@@ -68,6 +68,15 @@ const Header = () => {
                 <Link to="/login">Login</Link>{" "}
               </li>
             )}
+            <li>
+              {user && (
+                <img
+                  className="w-20 h-16 rounded-full"
+                  src={user.photoURL}
+                  alt=""
+                />
+              )}
+            </li>
           </ul>
         </div>
         <Link to="/">
@@ -94,7 +103,7 @@ const Header = () => {
               <li>
                 <Link to="/addtoy">Add a Toys</Link>
               </li>
-              
+
               <li>
                 <button onClick={handleLogOut}>Log out</button>
               </li>
@@ -104,10 +113,18 @@ const Header = () => {
               <Link to="/login">Login</Link>{" "}
             </li>
           )}
+          <li>
+            {user && (
+              <img
+                className="w-20 h-16 rounded-full"
+                src={user.photoURL}
+                alt=""
+              />
+            )}
+          </li>
         </ul>
       </div>
-      <div className="navbar-end">      
-      </div>
+      <div className="navbar-end"></div>
     </div>
   );
 };

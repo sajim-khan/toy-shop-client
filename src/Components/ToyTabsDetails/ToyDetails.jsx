@@ -31,13 +31,6 @@ const ToyDetails = ({ toy, closeModal }) => {
                 {" "}
                 {name}
               </h5>
-              <div class="flex items-baseline text-gray-900 dark:text-white">
-                <span class="text-3xl font-semibold">$</span>
-                <span class="text-5xl font-extrabold tracking-tight">49</span>
-                <span class="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">
-                  /month
-                </span>
-              </div>
               <ul role="list" class="space-y-5 my-7">
                 <li class="flex space-x-3">
                   <svg

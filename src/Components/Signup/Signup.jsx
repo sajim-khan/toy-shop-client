@@ -2,16 +2,19 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { userContext } from "../../AuthProvider/AuthProvider";
 import useTitle from "../../Hooks/Titile";
+import { updateProfile } from "firebase/auth";
 
 const Signup = () => {
+useTitle("Signup");
   const { createUser } = useContext(userContext);
 
   const handleSignUp = (event) => {
-  useTitle("Signup");
+  
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
     const user = { name, email, password };
     console.log(user);
@@ -19,7 +22,11 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log("created user", user);
+        console.log("Created user", user);
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photo,
+        });
       })
       .catch((error) => console.log(error));
   };
@@ -62,6 +69,16 @@ const Signup = () => {
                 type="password"
                 name="password"
                 placeholder="password"
+                required
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="font-medium">Photo Url</label>
+              <input
+                type="url"
+                name="photo"
+                placeholder="photo"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               />

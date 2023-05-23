@@ -46,13 +46,9 @@ const MyToy = () => {
     });
   };
 
-  const handleUpdateToy = (id) => {
-    // Update logic goes here
-  };
-
   return (
     <div>
-      <h2 className="text-5xl mt-10 text-center">My toys</h2>
+      <h2 className="text-5xl mt-10 text-center mb-10">My toys</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -85,7 +81,8 @@ const MyToy = () => {
                   <td>${data.price}</td>
                   <td>{data.ratings}</td>
                   <td>
-                    <Link to={`/update/${data._id}`}
+                    <Link
+                      to={`/update/${data._id}`}
                       // onClick={() => handleUpdateToy(data._id)}
                       htmlFor="my-modal-6"
                       className="py-1 px-5 rounded-full bg-[#024E92] text-white cursor-pointer"

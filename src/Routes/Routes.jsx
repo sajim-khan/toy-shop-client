@@ -71,6 +71,8 @@ const router = createBrowserRouter([
             <UpdateToy></UpdateToy>
           </PrivetRouter>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/addtoys/${params.id}`),
       },
     ],
   },
