@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useTitle from "../../Hooks/Titile";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const UpdateToy = () => {
   useTitle("Update toy");
@@ -15,7 +16,7 @@ const UpdateToy = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
-  const handleUpdateToy = (event) => {
+  const handleUpdateToy = (event, id) => {
     event.preventDefault();
 
     const form = event.target;
@@ -30,30 +31,41 @@ const UpdateToy = () => {
 
     console.log(updateToy);
 
-    // Perform the update request using fetch or any other library
-    // Replace the URL and add necessary headers and options
-    // fetch("https://car-doctor-server-smoky.vercel.app/bookings", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(updateToy),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       alert("Update a toy successfully");
-    //     }
-    //   });
+   fetch(`http://localhost:5000/addtoys/${id}`, {
+     method: "PATCH",
+     headers: {
+       "content-type": "application/json",
+     },
+     body: JSON.stringify(toys),
+   })
+     .then((res) => res.json())
+     .then((data) => {
+       console.log(data);
+       if (data.modifiedCount > 0) {
+         Swal.fire({
+           position: "top-end",
+           icon: "success",
+           title: "Your Toy has been Updated",
+           showConfirmButton: false,
+           timer: 1500,
+         });
+         // Update state
+         const remaining = toys.filter((updateToy) => updateToy._id !== id);
+         const updated = toys.find((updateToy) => updateToy._id === id);
+         updated.status = "confirm";
+         const newToys = [updated, ...remaining];
+         setToys(newToys);
+       }
+     });
   };
+
 
   return (
     <div className="p-32">
       <h1 className="text-center mb-10 text-4xl font-bold">Update a Toy</h1>
 
       {toys.map((toy) => (
-        <form key={toy._id} onSubmit={handleUpdateToy}>
+        <form key={toy._id} onSubmit={() => handleUpdateToy(toy._id)}>
           {/* first row */}
           <div className="flex gap-7 mb-4">
             <div className="form-control md:w-1/2">
